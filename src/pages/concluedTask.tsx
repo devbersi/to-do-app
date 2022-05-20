@@ -20,7 +20,8 @@ export default function ConcluedTask() {
     handleSaveTask,
     handleDeleteTask,
     handleUpdateTask,
-    handleDeleteAllConclueds
+    handleDeleteAllConclueds,
+    handleReturnConcluedForList
   } = useContext(ListContext);
 
   useEffect(() => {
@@ -46,12 +47,12 @@ export default function ConcluedTask() {
                     <input
                       type="text"
                       className={styles.inputList}
-                      value={task[0].name}
+                      value={task[0]?.name}
                       onChange={(event) => handleUpdateTask(event, index)}
                       disabled={true}
                     />
                     <div>
-                      <button onClick={() => handleDeleteTask(index)}>
+                      <button onClick={() => handleReturnConcluedForList(index)}>
                         Voltar
                       </button>
                     </div>

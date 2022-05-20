@@ -63,7 +63,7 @@ export default function Home() {
                     <input
                       type="text"
                       className={styles.inputList}
-                      value={task.name}
+                      value={task?.name}
                       onChange={(event) => handleUpdateTask(event, index)}
                     />
                     <div className={styles.insideLi}>

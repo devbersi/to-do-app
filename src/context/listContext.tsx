@@ -12,7 +12,8 @@ interface ListContextData {
   handleUpdateTask: any;
   handleConcluedTask: any;
   handleDeleteAllDeleteds: any;
-  handleDeleteAllConclueds: any
+  handleDeleteAllConclueds: any;
+  handleReturnConcluedForList: any;
 }
 
 export const ListContext = createContext<ListContextData>(
@@ -62,6 +63,18 @@ export const ListProvider = ({ children }: any) => {
     setConcluedList([])
   }
 
+  const handleReturnConcluedForList = (index: number) => {
+    const newArr = Array.from(concluedList)
+    const ret = newArr.splice(index, 1);
+    setConcluedList(newArr)
+    console.log('reeet', ret)
+    const parsed = Object.assign({}, ret)
+    const parsedTwo = Object.assign({}, parsed[0])
+    const parseFinal = parsedTwo[0]
+    list.push(parseFinal)
+    console.log("list", list)
+  } 
+
   return (
     <ListContext.Provider
       value={{
@@ -76,7 +89,8 @@ export const ListProvider = ({ children }: any) => {
         handleUpdateTask,
         handleConcluedTask,
         handleDeleteAllDeleteds,
-        handleDeleteAllConclueds
+        handleDeleteAllConclueds,
+        handleReturnConcluedForList
       }}
     >
       {children}
